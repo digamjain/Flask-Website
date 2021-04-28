@@ -9,6 +9,8 @@
     <!-- Bootstrap container class helping to indent the form properly -->
     <div class = "container">
       <form method = "POST" class = "form-register" style = "color:white">
+        {# To prevent CSRF attack - Generates a hidden field with a token #}
+        {{ form.hidden_tag()}}
           <h1 class="h3 mb-3 font-weight-normal">
               Please Create your Account
           </h1>
@@ -16,16 +18,16 @@
         {# Add Label to first filed #}
         {{ form.username.label() }}
         <!--Form control class in bootstrap give textual form control or an input field -->
-        {{ form.username(class = "form-control", placeholder = "username") }}
+        {{ form.username(class = "form-control", placeholder = "Username") }}
 
         {{ form.email_address.label() }}
-        {{ form.email_address(class = "form-control", placeholder = "email")}}
+        {{ form.email_address(class = "form-control", placeholder = "Email Address")}}
 
         {{ form.password1.label() }}
-        {{ form.password1(class = "form-control", placeholder = "password")}}
+        {{ form.password1(class = "form-control", placeholder = "Password")}}
 
         {{form.password2.label()}}
-        {{form.password2(class = "form-control",placeholder = "re-enter password")}}
+        {{form.password2(class = "form-control",placeholder = "Confirm")}}
           <br>
         {{form.submit(class = "btn btn-lg btn-block btn-primary")}}
       </form>
