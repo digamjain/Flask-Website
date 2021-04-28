@@ -1,5 +1,5 @@
 from market import app,db
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, flash
 from market.model import Item, User
 from market.forms import RegisterForm
 
@@ -34,5 +34,5 @@ def register_page():
         #Iterating over dictionary values
         for k,v in form.errors.items():
             #Printing error on the server side
-            print(f'{k} {v[0]}')
+            flash(str(k).capitalize()+' '+str(v[0]).lower(),category = 'danger')
     return render_template('register.html', form = form)
