@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  Register
+{% endblock %}
+
+{% block content %}
+  <body class="text-center">
+    <!-- Bootstrap container class helping to indent the form properly -->
+    <div class = "container">
+      <form method = "POST" class = "form-register" style = "color:white">
+          <h1 class="h3 mb-3 font-weight-normal">
+              Please Create your Account
+          </h1>
+          <br>
+        {# Add Label to first filed #}
+        {{ form.username.label() }}
+        <!--Form control class in bootstrap give textual form control or an input field -->
+        {{ form.username(class = "form-control", placeholder = "username") }}
+
+        {{ form.email_address.label() }}
+        {{ form.email_address(class = "form-control", placeholder = "email")}}
+
+        {{ form.password1.label() }}
+        {{ form.password1(class = "form-control", placeholder = "password")}}
+
+        {{form.password2.label()}}
+        {{form.password2(class = "form-control",placeholder = "re-enter password")}}
+          <br>
+        {{form.submit(class = "btn btn-lg btn-block btn-primary")}}
+      </form>
+    </div>
+  </body>
+{% endblock %}
