@@ -29,6 +29,11 @@
         {{form.password2.label()}}
         {{form.password2(class = "form-control",placeholder = "Confirm")}}
           <br>
+        <!-- Button to allow users to go back to login page if they have an account -->
+        <div class="checkbox mb-3">
+           <h6>Have an account?</h6>
+           <a class="btn btn-sm btn-secondary" href="{{ url_for('login_page') }}">Login</a>
+        </div>
         {{form.submit(class = "btn btn-lg btn-block btn-primary")}}
       </form>
     </div>
