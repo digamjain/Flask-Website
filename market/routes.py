@@ -2,6 +2,7 @@ from market import app,db
 from flask import render_template, redirect, url_for, flash
 from market.model import Item, User
 from market.forms import RegisterForm, LoginForm
+from flask_login import login_user
 
 #Can have multiple routes for the same page
 @app.route('/')
@@ -41,5 +42,13 @@ def register_page():
 @app.route('/login',methods = ["GET","POST"])
 def login_page():
     form = LoginForm()
-
+    #Validate the forms for requirements
+    if form.validate_on_submit():
+        attempted_user = User.query.filter_by(username=form.username.data).first()
+        if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
+            login_user(attempted_user)
+            flash(f'Login successful as {attempted_user.username}',category='success')
+            return redirect(url_for('market_page'))
+        else:
+            flash('Login failed! Incorrect User Name or Password',category='danger')
     return render_template('login.html', form = form)
