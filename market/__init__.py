@@ -3,6 +3,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 #Flask library for hashed bcrypt passwords
 from flask_bcrypt import Bcrypt
+#Flask library to manage login page
+from flask_login import LoginManager
 
 app = Flask(__name__)
 
@@ -23,5 +25,8 @@ db = SQLAlchemy(app)
 
 #Initialize the instance of bcrypt class
 bcrypt = Bcrypt(app)
+
+#Initializing the instance of LoginManager class
+login_manager = LoginManager(app)
 
 from market import routes
