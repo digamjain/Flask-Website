@@ -1,7 +1,7 @@
 from market import app,db
 from flask import render_template, redirect, url_for, flash
 from market.model import Item, User
-from market.forms import RegisterForm
+from market.forms import RegisterForm, LoginForm
 
 #Can have multiple routes for the same page
 @app.route('/')
@@ -24,7 +24,7 @@ def register_page():
     if form.validate_on_submit():
         user_to_create = User(username = form.username.data,
                                 email = form.email_address.data,
-                                hash_password = form.password1.data)
+                                password = form.password1.data)
         db.session.add(user_to_create)
         db.session.commit()
         return redirect(url_for('market_page'))
@@ -34,5 +34,12 @@ def register_page():
         #Iterating over dictionary values
         for k,v in form.errors.items():
             #Printing error on the server side
-            flash(str(k).capitalize()+' '+str(v[0]).lower(),category = 'danger')
+            flash(str(str(k)+' '+str(v[0]).lower()).replace('_',' ').replace('password1','password').replace('password2','confirm password').capitalize(),category = 'danger')
     return render_template('register.html', form = form)
+
+#Login page
+@app.route('/login',methods = ["GET","POST"])
+def login_page():
+    form = LoginForm()
+
+    return render_template('login.html', form = form)

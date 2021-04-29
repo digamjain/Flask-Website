@@ -3,3 +3,4 @@ flask-sqlalchemy
 flask-wtf
 wtforms
 email_validator
+flask_bcrypt

@@ -1,6 +1,8 @@
 #render_template helps to render an html page located under templates directory
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+#Flask library for hashed bcrypt passwords
+from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
 
@@ -18,5 +20,8 @@ app.config['SECRET_KEY'] = 'b7534db2613d0afb6c72ea05'
 
 #Initialize the instance of SQLAlchemy class with our flask instance
 db = SQLAlchemy(app)
+
+#Initialize the instance of bcrypt class
+bcrypt = Bcrypt(app)
 
 from market import routes
