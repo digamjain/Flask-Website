@@ -28,5 +28,7 @@ bcrypt = Bcrypt(app)
 
 #Initializing the instance of LoginManager class
 login_manager = LoginManager(app)
-
+#To redirect users to login page and show the in built message when they try to go to market page
+login_manager.login_view = 'login_page'
+login_manager.login_message_category = 'info'
 from market import routes
