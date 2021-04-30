@@ -1,7 +1,7 @@
 from market import app,db
 from flask import render_template, redirect, url_for, flash, request
 from market.model import Item, User
-from market.forms import RegisterForm, LoginForm, PurchaseItemForm
+from market.forms import RegisterForm, LoginForm, PurchaseItemForm, SellItemForm
 from flask_login import login_user,logout_user, login_required, current_user
 
 #Can have multiple routes for the same page
@@ -14,9 +14,11 @@ def homepage():
 @app.route('/market',methods = ['GET','POST'])
 @login_required
 def market_page():
+    selling_form =  SellItemForm()
     purchase_form = PurchaseItemForm()
     if request.method == "POST":
-        purchased_item = request.form['purchased_item']
+        #Purchase Item Logic
+        purchased_item = request.form.get('purchased_item')
         purchased_Item_object = Item.query.filter_by(name = purchased_item).first()
         if purchased_Item_object:
             if current_user.can_purchase(purchased_Item_object):
@@ -24,10 +26,20 @@ def market_page():
                 flash(f'{purchased_item} purchased successfully',category = 'success')
             else:
                 flash(f'Insufficient funds to purchase {purchased_Item_object.name}',category = 'danger')
+        #Selling Item Logic
+        sold_item = request.form.get('sold_item')
+        sold_item_object = Item.query.filter_by(name = sold_item).first()
+        if sold_item_object:
+            if current_user.can_sell(sold_item_object):
+                sold_item_object.change_owner(current_user)
+                flash(f'{sold_item} sold successfully',category = 'success')
+            else:
+                flash(f"Something went wrong. {sold_item_object.name} can't be sold at the moment",category = 'danger')
         return redirect(url_for('market_page'))
     if request.method == 'GET':
         items = Item.query.filter_by(owner = None)
-        return render_template('market.html', item = items , purchase_form = purchase_form)
+        owned_items = Item.query.filter_by(owner = current_user.id)
+        return render_template('market.html', item = items , purchase_form = purchase_form , owned_items = owned_items ,selling_form = selling_form)
 
 #Registration page
 #POST method was specified as the form will pot user data to the server back

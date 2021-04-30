@@ -39,6 +39,21 @@ Bazar
    <div class="col-4">
      <h2>Owned</h2>
      <p>Sell items to market prices</p>
+     <div class = "row">
+       {% for i in owned_items %}
+       {% include '/includes/owned_item_modals.html' %}
+
+       <div class = "col-md-6">
+         <div style="margin-bottom: 5px" class="card text-center bg-dark bg-outline">
+           <div class="card-body">
+             <h5 class="card-title">{{i.name}}</h5>
+             <button type="button" class="btn btn-outline btn-danger " style="margin-bottom: 5px" data-toggle="modal" data-target="#Modal-SellingConfirm-{{ i.id }}">
+             Sell for ₹{{i.price}}
+             </button>
+         <p class="card-text"><strong>{{i.description}}</strong></p>
+       </div>
+     </div>
    </div>
+   {% endfor %}
 </div>
 {% endblock %}
