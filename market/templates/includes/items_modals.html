@@ -24,7 +24,7 @@
         {{ i.description }}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
+        <button type="button" class="btn btn-secondary btn-outline btn-danger"
                 data-dismiss="modal">Close
         </button>
       </div>
@@ -49,10 +49,18 @@
         </button>
       </div>
       <div class="modal-body">
-        Are you sure you want to buy {{ i.name }} for ₹{{ i.price }} ?
+        <form method="POST">
+          {{ purchase_form.hidden_tag() }}
+          <h5 class = "test-center">
+            Are you sure you want to buy {{ i.name }} for ₹{{ i.price }} ?
+          </h5>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
+          <!-- return the name of the item user tried to purchase -->
+          <input id="purchased_item" name="purchased_item" type="hidden" value="{{i.name}}">
+          {{purchase_form.submit(class = "btn btn-primary btn-outline btn-success ")}}
+        </form>
+        <button type="button" class="btn btn-secondary btn-outline btn-danger"
                 data-dismiss="modal">Close
         </button>
       </div>

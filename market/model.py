@@ -18,9 +18,13 @@ class User(db.Model, UserMixin):
     budget = db.Column(db.Integer(), nullable=False, default=1000)
     items = db.relationship('Item', backref='owned_user', lazy=True)
 
+    #To check if the user have enough budget to purchae the item
+    def can_purchase(self,item_obj):
+        return self.budget >= item_obj.price
+
     # Returns the username of the User
     def __repr__(self):
-        return f'username {self.hash_password}'
+        return self.username
 
     # Decorator property to return password to instances
     @property
@@ -50,7 +54,7 @@ class User(db.Model, UserMixin):
             for i in range(start,len(temp_lis)-1,2):
                 temp_lis.insert(i+inc,',')
                 inc+=1
-        return "₹"+"".join(temp_lis) 
+        return "₹"+"".join(temp_lis)
 
 class Item(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
@@ -65,3 +69,9 @@ class Item(db.Model):
     # Returns the name of the item
     def __repr__(self):
         return f'Item: {self.name}'
+
+    #Function to assign ownership to a user
+    def assign_owner(self,user_obj):
+        self.owner = user_obj.id
+        user_obj.budget -= self.price
+        db.session.commit()
