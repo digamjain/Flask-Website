@@ -1,39 +1,44 @@
 {% extends 'layout.html' %}
-
 {% block title %}
-  Bazar
+Bazar
 {% endblock %}
-
 {%block content %}
-      <table class="table table-hover table-dark">
+<div class="row" style="margin-top:20px; margin-left:20px;">
+   <div class="col-8">
+     <h2>For Sale</h2>
+     <p>Limited time offers
+   <table class="table table-hover table-dark">
       <thead>
-          <tr>
-              <!-- Your Columns HERE -->
-              <th scope="col">ID</th>
-              <th scope="col">Name</th>
-              <th scope="col">Barcode</th>
-              <th scope="col">Price</th>
-              <th scope="col">Options</th>
-
-          </tr>
+         <tr>
+            <!-- Your Columns HERE -->
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Barcode</th>
+            <th scope="col">Price</th>
+            <th scope="col">Options</th>
+         </tr>
       </thead>
       <tbody>
-          <!-- Your rows inside the table HERE: -->
-              {% for i in item %}
-                <tr>
-                    <td>{{i.id}}</td>
-                    <td>{{i.name}}</td>
-                    <td>{{i.barcode}}</td>
-                    <td>₹{{i.price}}</td>
-                    <td>
-                      <button class="btn btn-outline btn-info">More Info</button>
-                      <button class="btn btn-outline btn-success">Buy</button>
-                    </td>
-
-
-                </tr>
-              {% endfor %}
-
+         <!-- Your rows inside the table HERE: -->
+         {% for i in item %}
+         {% include '/includes/items_modals.html' %}
+         <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.barcode}}</td>
+            <td>₹{{i.price}}</td>
+            <td>
+               <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ i.id }}">More Info</button>
+               <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ i.id }}">Buy</button>
+            </td>
+         </tr>
+         {% endfor %}
       </tbody>
-    </table>
+   </table>
+</div>
+   <div class="col-4">
+     <h2>Owned</h2>
+     <p>Sell items to market prices</p>
+   </div>
+</div>
 {% endblock %}
