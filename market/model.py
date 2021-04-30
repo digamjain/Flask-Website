@@ -18,9 +18,13 @@ class User(db.Model, UserMixin):
     budget = db.Column(db.Integer(), nullable=False, default=1000)
     items = db.relationship('Item', backref='owned_user', lazy=True)
 
-    #To check if the user have enough budget to purchae the item
+    #To check if the user have enough budget to purchase the item
     def can_purchase(self,item_obj):
         return self.budget >= item_obj.price
+
+    #To check if the user owns the item
+    def can_sell(self,item_obj):
+        return item_obj.owner == self.id
 
     # Returns the username of the User
     def __repr__(self):
@@ -74,4 +78,10 @@ class Item(db.Model):
     def assign_owner(self,user_obj):
         self.owner = user_obj.id
         user_obj.budget -= self.price
+        db.session.commit()
+
+    #Function to change back ownership to market of the item
+    def change_owner(self,user_obj):
+        self.owner = None
+        user_obj.budget += self.price
         db.session.commit()
