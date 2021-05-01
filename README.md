@@ -1,14 +1,15 @@
 <p align="center"><img src="https://user-images.githubusercontent.com/42437393/116786009-3d0f8b80-aaba-11eb-8002-2f432d3c2973.png" width="128px"></p>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![python](https://img.shields.io/badge/python-v3.8.5-blue)
-[![GitHub license](https://img.shields.io/github/license/digamjain/Flask-Website)](https://github.com/digamjain/Flask-Website/blob/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/digamjain/Flask-Website)](https://github.com/digamjain/Flask-Website/issues)
-![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)
-
+<p align="center">
+    <a href="https://img.shields.io/badge/python-v3.8.5-blue">
+        <img src="https://img.shields.io/badge/python-v3.8.5-blue" /></a>
+      <a href="https://github.com/digamjain/Flask-Website/blob/master/LICENSE">
+        <img src="https://img.shields.io/github/license/digamjain/Flask-Website" /></a>
+        <a href="https://github.com/digamjain/Flask-Website/issues">
+        <img src="https://img.shields.io/github/issues/digamjain/Flask-Website" /></a>
+  <a href="https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg">
+        <img src="https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg" /></a>
+</p>
 <h1 align="center">Flask-Website</h1>
 
 Navigate to the link to try the webpage
