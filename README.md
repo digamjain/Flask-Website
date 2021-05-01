@@ -40,6 +40,6 @@ https://digamj.pythonanywhere.com/
 ```
 git clone https://github.com/digamjain/Flask-Website
 cd Flask-Website
-python3 run.py
 pip install -r requirements.txt
+python3 run.py
 ```
