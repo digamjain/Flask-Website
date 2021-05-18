@@ -1,3 +1,4 @@
+
 <p align="center"><img src="https://user-images.githubusercontent.com/42437393/116786009-3d0f8b80-aaba-11eb-8002-2f432d3c2973.png" width="128px"></p>
 
 <p align="center">
@@ -15,7 +16,12 @@
 Navigate to the link to try the webpage
 https://digamj.pythonanywhere.com/
 
-![Screenshot from 2021-05-01 20-13-20](https://user-images.githubusercontent.com/42437393/116788194-ec9e2b00-aac5-11eb-9e8f-5972a73938b0.png)
+<div align="center">
+    <a href='https://raw.githubusercontent.com/digamjain/temp_storage/main/bazar.gif?token=AKDYWEIJRS6S3WTHG5224XTAVSJEK'>
+        <img src="https://raw.githubusercontent.com/digamjain/temp_storage/main/bazar.gif?token=AKDYWEIJRS6S3WTHG5224XTAVSJEK" width="850" height="478"/></a>
+</div>    
+
+
 
 ## Tools & Frameworks
 ```
