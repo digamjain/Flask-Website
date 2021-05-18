@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(length=24), nullable=False, unique=True)
     email = db.Column(db.String(length=70), nullable=False, unique=True)
     hash_password = db.Column(db.String(length=60), nullable=False)
-    budget = db.Column(db.Integer(), nullable=False, default=1000)
+    budget = db.Column(db.Integer(), nullable=False, default=100000)
     items = db.relationship('Item', backref='owned_user', lazy=True)
 
     #To check if the user have enough budget to purchase the item

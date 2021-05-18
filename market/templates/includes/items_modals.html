@@ -5,9 +5,7 @@
 </style>
 
 <!-- More Info -->
-<div class="modal fade" id="Modal-MoreInfo-{{ i.id }}"
-     tabindex="-1"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Modal-MoreInfo-{{ i.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -15,17 +13,15 @@
           <!-- -->
           {{ i.name }}
         </h5>
-        <button type="button" class="close"
-                data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-left">
         {{ i.description }}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary btn-outline btn-danger"
-                data-dismiss="modal">Close
+        <button type="button" class="btn btn-secondary btn-outline btn-danger" data-dismiss="modal">Close
         </button>
       </div>
     </div>
@@ -33,35 +29,31 @@
 </div>
 
 <!-- Purchase Confirm -->
-<div class="modal fade" id="Modal-PurchaseConfirm-{{ i.id }}"
-     tabindex="-1"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Modal-PurchaseConfirm-{{ i.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="ModalLabel">
+        <h5 class="modal-title  " id="ModalLabel">
           <!-- -->
           {{ i.name }}
         </h5>
-        <button type="button" class="close"
-                data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form method="POST">
           {{ purchase_form.hidden_tag() }}
-          <h5 class = "test-center">
-            Are you sure you want to buy {{ i.name }} for ₹{{ i.price }} ?
+          <h5 class="test-center text-left">
+            Are you sure you want to buy {{ i.name }} for ₹{{ i.price }}?
           </h5>
       </div>
       <div class="modal-footer">
-          <!-- return the name of the item user tried to purchase -->
-          <input id="purchased_item" name="purchased_item" type="hidden" value="{{i.name}}">
-          {{purchase_form.submit(class = "btn btn-primary btn-outline btn-success ")}}
+        <!-- return the name of the item user tried to purchase -->
+        <input id="purchased_item" name="purchased_item" type="hidden" value="{{i.name}}">
+        {{purchase_form.submit(class = "btn btn-primary btn-outline btn-success ")}}
         </form>
-        <button type="button" class="btn btn-secondary btn-outline btn-danger"
-                data-dismiss="modal">Close
+        <button type="button" class="btn btn-secondary btn-outline btn-danger" data-dismiss="modal">Close
         </button>
       </div>
     </div>
