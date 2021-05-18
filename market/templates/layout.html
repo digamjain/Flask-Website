@@ -1,92 +1,122 @@
 <!-- Code taken for practice from https://getbootstrap.com/docs/4.5/getting-started/introduction/
-    &
-    http://www.jimshapedcoding.com/courses/Flask Full Series-->
-<!doctype html> <!-- HTML document -->
-<html lang="en"> <!-- Language to be used is English -->
-   <head>
-      <!-- Required meta tags -->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-      <title>
-         {# Jinja block syntax allows for changes in template inheritance #}
-         {% block title %}{% endblock %}
-      </title>
-   </head>
-   <body>
-      <!-- Navbar here -->
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-         <a class="navbar-brand" href="{{url_for('homepage')}}">Flask BazaR</a>
-         <button class="navbar-toggler" type="button" data-toggle=   "collapse" data-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-               <li class="nav-item active">
-                  <a class="nav-link" href="{{url_for('homepage')}}">Home <span class="sr-only">(current)</span></a>
-               </li>
-               <li class="nav-item">
-                   <a class="nav-link" href="{{url_for('market_page')}}">Bazar</a>
-               </li>
-            </ul>
-            {% if current_user.is_authenticated %}
-              <ul class="navbar-nav">
-                  <li class="nav-item">
-                      <a class="nav-link" style="color: lawngreen; font-weigth=bold">
-                        <i class="fas fa-coins"></i>{{ current_user.format_budget }}
-                      </a>
-                 </li>
-                  <li class="nav-item">
-                      <a class="nav-link">Welcome, {{current_user.username}}</a>
-                 </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{url_for('logout_page')}}">Logout</a>
-                 </li>
-              </ul>
-            {% else %}
-              <ul class="navbar-nav">
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{url_for('login_page')}}">Login</a>
-                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link" href="{{url_for('register_page')}}">Register</a>
-                 </li>
-              </ul>
-            {% endif %}
-         </div>
-      </nav>
-      {# get_flashed_messages is the function used to retrieve messages from the flash function #}
-      {# with_categories is for different types of errors #}
-      {% with messages = get_flashed_messages(with_categories = true) %}
-        {% if messages %}
-          {% for category, message in messages%}
-            <div class="alert alert-{{ category }}">
-              <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              {{ message }}
-            </div>
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
-      {% block content %}{% endblock %}
-      <!-- Future Content here -->
+   &
+   http://www.jimshapedcoding.com/courses/Flask Full Series-->
 
+<!-- HTML document -->
+<!doctype html>
+<html lang="en">
+<!-- Language to be used is English -->
 
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <title>
+    {# Jinja block syntax allows for changes in template inheritance #}
+    {% block title %}{% endblock %}
+  </title>
+</head>
 
-      <!-- Optional JavaScript -->
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-   </body>
-  <!-- For Dark theme -->
-   <style>
-      body {
-      background-color: #282828;
-      color: #d7dbdd;
-      }
-   </style>
+<body>
+  <!-- Navbar here -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark ">
+    <a class="navbar-brand" href="{{url_for('homepage')}}">Flask BazaЯ</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item {{'active' if active_page == 'home'}}">
+          <a class="nav-link" href="{{url_for('homepage')}}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item {{'active' if active_page == 'market'}}">
+          <a class="nav-link " href="{{url_for('market_page')}}">Bazar</a>
+        </li>
+      </ul>
+      {% if current_user.is_authenticated %}
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" style="color: lawngreen; font-weigth=bold">
+            <i class="fas fa-coins"></i>{{ current_user.format_budget }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Welcome, {{current_user.username}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('logout_page')}}">Logout</a>
+        </li>
+      </ul>
+      {% else %}
+      <ul class="navbar-nav">
+        <li class="nav-item {{'active' if active_page == 'login'}}">
+          <a class="nav-link" href="{{url_for('login_page')}}">Login</a>
+        </li>
+        <li class="nav-item {{'active' if active_page == 'register'}}">
+          <a class="nav-link" href="{{url_for('register_page')}}">Register</a>
+        </li>
+      </ul>
+      {% endif %}
+    </div>
+  </nav>
+
+  {# get_flashed_messages is the function used to retrieve messages from the flash function #}
+  {# with_categories is for different types of errors #}
+  {% with messages = get_flashed_messages(with_categories = true) %}
+  {% if messages %}
+  {% for category, message in messages%}
+  <div class="alert alert-{{ category }}">
+    <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+
+  <!-- Future Content here -->
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://kit.fontawesome.com/4b82852b17.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+
+<!-- For Dark theme -->
+
+<style>
+  html,
+  body {
+    max-width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background-attachment: fixed;
+  }
+
+  body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 500% 500%;
+    animation: gradient 10s ease infinite;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+</style>
+
 </html>

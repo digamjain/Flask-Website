@@ -1,41 +1,73 @@
 {% extends 'layout.html' %}
+{%set active_page = 'register'%}
 
 {% block title %}
-  Register
+Register
 {% endblock %}
 
 {% block content %}
-  <body class="text-center">
-    <!-- Bootstrap container class helping to indent the form properly -->
-    <div class = "container">
-      <form method = "POST" class = "form-register" style = "color:white">
-        {# To prevent CSRF attack - Generates a hidden field with a token #}
-        {{ form.hidden_tag()}}
-          <h1 class="h3 mb-3 font-weight-normal">
-              Please Create your Account
-          </h1>
-          <br>
-        {# Add Label to first filed #}
-        {{ form.username.label() }}
-        <!--Form control class in bootstrap give textual form control or an input field -->
-        {{ form.username(class = "form-control", placeholder = "Username") }}
 
-        {{ form.email_address.label() }}
-        {{ form.email_address(class = "form-control", placeholder = "Email Address")}}
+<body>
+  <!-- Bootstrap container class helping to indent the form properly -->
+  <div class="container overflow-hidden" style="color:white">
+    <form method="POST" class="form-register" style="color:white">
+      {# To prevent CSRF attack - Generates a hidden field with a token #}
+      {{ form.hidden_tag()}}
+      <h1 class=" m-3 font-weight-normal text-center">
+        <b>Register</b>
+      </h1>
+      <br>
+      {# Add Label to first filed #}
+      {{ form.username.label() }}
+      <!--Form control class in bootstrap give textual form control or an input field -->
+      {{ form.username(class = "form-control newstyle", placeholder = "Username") }}
 
-        {{ form.password1.label() }}
-        {{ form.password1(class = "form-control", placeholder = "Password")}}
+      {{ form.email_address.label() }}
+      {{ form.email_address(class = "form-control newstyle", placeholder = "Email Address")}}
 
-        {{form.password2.label()}}
-        {{form.password2(class = "form-control",placeholder = "Confirm")}}
-          <br>
-        <!-- Button to allow users to go back to login page if they have an account -->
-        <div class="checkbox mb-3">
-           <h6>Have an account?</h6>
-           <a class="btn btn-sm btn-secondary" href="{{ url_for('login_page') }}">Login</a>
-        </div>
-        {{form.submit(class = "btn btn-lg btn-block btn-primary")}}
-      </form>
-    </div>
-  </body>
+      {{ form.password1.label() }}
+      {{ form.password1(class = "form-control newstyle", placeholder = "Password")}}
+
+      {{form.password2.label()}}
+      {{form.password2(class = "form-control newstyle",placeholder = "Confirm")}}
+      <br>
+      {{form.submit(class = "btn btn-lg btn-block btn-primary newstyle")}}
+      <!-- Button to allow users to go back to login page if they have an account -->
+      <br>
+      <div class="checkbox mb-3 text-center">
+        <h6>Have an account?</h6>
+        <a class="btn btn-sm btn-secondary newstyle" href="{{ url_for('login_page') }}">Login</a>
+      </div>
+    </form>
+  </div>
+</body>
+<style>
+  .newstyle {
+    position: relative;
+    cursor: text;
+  }
+
+  .container:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+    filter: blur(20px);
+    content: '';
+  }
+
+  .container {
+    top: 5%;
+    width: 35rem;
+    height: 35rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    background: inherit;
+    overflow: hidden;
+  }
+</style>
 {% endblock %}

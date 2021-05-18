@@ -1,59 +1,94 @@
 {% extends 'layout.html' %}
+{%set active_page = 'market'%}
+
 {% block title %}
 Bazar
 {% endblock %}
 {%block content %}
 <div class="row" style="margin-top:20px; margin-left:20px;">
-   <div class="col-8">
-     <h2>For Sale</h2>
-     <p>Limited time offers
-   <table class="table table-hover table-dark">
-      <thead>
-         <tr>
+  <div class="col-8 text-center" style="color:white">
+    <h1><b>For Sale</b></h2>
+      <p>Limited time offers
+      <table class="table borderless container overflow-hidden " style="color:white">
+        <thead>
+          <tr>
             <!-- Your Columns HERE -->
             <th scope="col">ID</th>
             <th scope="col">Name</th>
             <th scope="col">Barcode</th>
             <th scope="col">Price</th>
             <th scope="col">Options</th>
-         </tr>
-      </thead>
-      <tbody>
-         <!-- Your rows inside the table HERE: -->
-         {% for i in item %}
-         {% include '/includes/items_modals.html' %}
-         <tr>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Your rows inside the table HERE: -->
+          {% for i in item %}
+          {% include '/includes/items_modals.html' %}
+          <tr>
             <td>{{i.id}}</td>
             <td>{{i.name}}</td>
             <td>{{i.barcode}}</td>
             <td>₹{{i.price}}</td>
             <td>
-               <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ i.id }}">More Info</button>
-               <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ i.id }}">Buy</button>
+              <button class="btn btn-outline btn-info newstyle" data-toggle="modal" data-target="#Modal-MoreInfo-{{ i.id }}">More Info</button>
+              <button class="btn btn-outline btn-success newstyle" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ i.id }}">Buy</button>
             </td>
-         </tr>
-         {% endfor %}
-      </tbody>
-   </table>
-</div>
-   <div class="col-4">
-     <h2>Owned</h2>
-     <p>Sell items to market prices</p>
-     <div class = "row">
-       {% for i in owned_items %}
-       {% include '/includes/owned_item_modals.html' %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  </div>
+  <div class="col-4 text-center" style="color:white">
+    <h1><b>Owned</b></h1>
+    <p>Sell items to market prices</p>
+    <div class="row">
+      {% for i in owned_items %}
+      {% include '/includes/owned_item_modals.html' %}
 
-       <div class = "col-md-6">
-         <div style="margin-bottom: 5px" class="card text-center bg-dark bg-outline">
-           <div class="card-body">
-             <h5 class="card-title">{{i.name}}</h5>
-             <button type="button" class="btn btn-outline btn-danger " style="margin-bottom: 5px" data-toggle="modal" data-target="#Modal-SellingConfirm-{{ i.id }}">
-             Sell for ₹{{i.price}}
-             </button>
-         <p class="card-text"><strong>{{i.description}}</strong></p>
-       </div>
-     </div>
-   </div>
-   {% endfor %}
-</div>
-{% endblock %}
+      <div style="margin-bottom: 5px; width:14rem; height:10rem;" class="card text-center bg-outline container overflow-hidden">
+        <div class="card-body">
+          <h5 class="card-title">{{i.name}}</h5>
+          <button type="button" class="btn btn-outline btn-danger newstyle" style="margin-bottom: 5px" data-toggle="modal" data-target="#Modal-SellingConfirm-{{ i.id }}">
+            Sell for ₹{{i.price}}
+          </button>
+          <p class="card-text"><strong>{{i.barcode}}</strong></p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <style>
+    .newstyle {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .container:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+      filter: blur(20px);
+      content: '';
+    }
+
+    .container {
+      top: 0;
+      width: 50rem;
+      height: 35rem;
+      box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+      border-radius: 15px;
+      position: relative;
+      z-index: 1;
+      background: inherit;
+      overflow: hidden;
+    }
+
+    .borderless td,
+    .borderless th {
+      border: none;
+    }
+  </style>
+  {% endblock %}

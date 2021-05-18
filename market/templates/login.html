@@ -1,34 +1,59 @@
 {% extends 'layout.html' %}
-
+{%set active_page = 'login'%}
 {% block title %}
-  Login
+Login
 {% endblock %}
 
 {% block content %}
-  <body class="text-center">
-    <div class="container">
-      <form method="POST" class="form-signin" style="color:white">
-        {{ form.hidden_tag() }}
-        <h1 class="h3 mb-3 font-weight-normal">
-          Please Login
-        </h1>
-        <br>
-        {{ form.username.label() }}
-        {{ form.username(class="form-control", placeholder="User Name") }}
-
-        {{ form.password.label() }}
-        {{ form.password(class="form-control", placeholder="Password") }}
-
-        <br>
-        <!-- Button to allow users to go back to register page if they dont have an account -->
-        <div class="checkbox mb-3">
-           <h6>Do not have an account?</h6>
-           <a class="btn btn-sm btn-secondary" href="{{ url_for('register_page') }}">Register</a>
-        </div>
-
-        {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
-
-      </form>
+<div class="container overflow-hidden" style="color:white;">
+  <form method="POST" class="form-signin" style="color:white">
+    {{ form.hidden_tag() }}
+    <h1 class="font-weight-normal text-center m-3">
+      <b>Login</b>
+    </h1>
+    {{ form.username.label() }}
+    {{ form.username(class="form-control newstyle", placeholder="User Name") }}
+    {{ form.password.label() }}
+    {{ form.password(type="password",class="form-control newstyle", placeholder="Password") }}
+    <br>
+    <!-- Button to allow users to go back to register page if they dont have an account -->
+    {{ form.submit(class="btn btn-lg btn-block btn-primary newstyle") }}
+    <br>
+    <div class="checkbox m-3 text-center">
+      <h6>Do not have an account?</h6>
+      <a class="btn btn-sm btn-secondary" style=" position:relative; cursor:pointer;" href="{{ url_for('register_page') }}">Register</a>
     </div>
-  </body>
+
+
+  </form>
+</div>
+<style>
+  .newstyle {
+    position: relative;
+    cursor: text;
+  }
+
+  .container:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+    filter: blur(20px);
+    content: '';
+  }
+
+  .container {
+    top: 10%;
+    width: 30rem;
+    height: 28rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    background: inherit;
+    overflow: hidden;
+  }
+</style>
 {% endblock %}

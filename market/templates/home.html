@@ -1,19 +1,134 @@
 {#For exporting the layout.html file to this page#}
 {% extends 'layout.html' %}
+{%set active_page = 'home'%}
 
 {# Name to be replaced inside layout.html #}
 {% block title %}
-  BazaR
+BazaЯ
 {%endblock%}
 
 {% block content %}
-  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark" style="color:white">
-      <div class="col-md-5 p-lg-5 mx-auto my-5">
-          <h1 class="display-4 font-weight-normal">Flask BazaR</h1>
-          <p class="lead font-weight-normal">Start purchasing products by clicking the link below</p>
-          <a class="btn btn-primary" href="{{ url_for('market_page') }}">Get Started</a>
-      </div>
-      <div class="product-device box-shadow d-none d-md-block"></div>
-      <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+<div class="container overflow-hidden text-center" style="color:white">
+  <div class="col-md-5 p-lg-5 mx-auto my-5">
+    <h1 class="display-4 font-weight-normal">Flask BazaЯ</h1>
+    <p class="lead font-weight-normal">Don't know where to start?<br>Flask below looks interesting</p>
+    <a class="btn flask fas fa-flask" href="{{ url_for('market_page') }}"></a>
   </div>
+  <div class="product-device box-shadow d-none d-md-block"></div>
+  <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+</div>
+<style>
+  .flask {
+    font-size: 30px;
+    color: white;
+  }
+
+  .footer {
+    display: flex;
+    position: fixed;
+    height: 7%;
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    align-content: space;
+  }
+
+  .btn-circle {
+    border-width: 0;
+    width: 30px;
+    height: 30px;
+    padding: 1px 0px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.42857;
+  }
+
+  .btn-circle:hover {
+    color: #000;
+    background: #fff;
+  }
+
+  .container:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+    filter: blur(10px);
+  }
+
+  .container {
+    top: 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center width: 100rem;
+    height: 30rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    background: inherit;
+    overflow: hidden;
+  }
+
+  .instagram {
+    padding: 2px 0px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 40px;
+    color: #fff;
+    vertical-align: middle;
+    background: #d6249f;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  }
+
+  .container:before {
+    background: inherit;
+  }
+
+  .google {
+    background: #EA4335;
+    color: #ffffff;
+  }
+
+  .twitter {
+    background: #1DA1F2;
+    color: #ffffff;
+  }
+
+  .linkedin {
+    background: #0072B1;
+  }
+
+  .github {
+    border-radus: 10px;
+    background: #000;
+    color: #fff;
+  }
+</style>
+<div class="footer center footer-copyright ">
+  <div style="color:#787b80">© 2021 Copyright:
+    <a href="https://digamjain.42web.io/" style="color:#576e94"> digamjain.42web.io</a>
+  </div>
+  <div>
+    <a class="btn btn-circle btn-primary btn-floating" href="https://www.facebook.com/digam.jain/" role="button">
+      <i class="fab fa-facebook-f"></i></a>
+    <a class="btn btn-circle github btn-floating" href="https://github.com/digamjain/" role="button">
+      <i class="fab fa-github"></i></a>
+    <a class="btn btn-circle btn-primary btn-floating" href="https://www.linkedin.com/in/digamjain/" role="button">
+      <i class="fab fa-linkedin-in"></i></a>
+    <a class="btn btn-circle btn-primary instagram m-1" href="https://www.instagram.com/digamj/" role="button">
+      <i class="fab fa-instagram"></i></a>
+    <a class="btn btn-circle btn-light google" href="mailto:digamj@gmail.com" role="button">
+      <i class="fab fa-google"></i></a>
+    <a class="btn btn-circle btn-light m-1 twitter" href="https://twitter.com/jaindigam" role="button">
+      <i class="fab fa-twitter"></i></a>
+  </div>
+</div>
 {% endblock %}
