@@ -17,8 +17,8 @@ Navigate to the link to try the webpage
 https://digamj.pythonanywhere.com/
 
 <div align="center">
-    <a href='https://raw.githubusercontent.com/digamjain/temp_storage/main/bazar.gif?token=AKDYWEIJRS6S3WTHG5224XTAVSJEK'>
-        <img src="https://raw.githubusercontent.com/digamjain/temp_storage/main/bazar.gif?token=AKDYWEIJRS6S3WTHG5224XTAVSJEK" width="850" height="478"/></a>
+    <a href='https://raw.githubusercontent.com/digamjain/temp_storage/main/bazar.gif?token=AKDYWEMJ6U54MJ6OXPBPCO3AXCXAU'>
+        <img src="https://raw.githubusercontent.com/digamjain/temp_storage/main/bazar.gif?token=AKDYWEMJ6U54MJ6OXPBPCO3AXCXAU" width="850" height="478"/></a>
 </div>    
 
 
